@@ -19,22 +19,26 @@ class Server{
         this.server = createServer(this.app)
 
         //Configuraciones del Sockets
-        this.io = new ServerSockets(this.server);
+        this.io = new ServerSockets(this.server,{
+            cors:{
+                origin: '*',
+                methods: ['GET','POST'],
+                credentials: true
+            }
+        });
     }
     //Middleware
     middleware(){
-        this.app.use(express.static(path.join(__dirname , '../public')));
-        this.app.use(cors())
-        
+        this.app.use(cors())        
     }
-    configuarSockets(){
+    configurarSockets(){
         new Socket(this.io)
     }
     execute(){
         //Inicializar middleware
         this.middleware();
         //Inicializar sockets
-        this.configuarSockets();
+        this.configurarSockets();
         //Inicializar server
         this.server.listen(this.port, () => {
              console.log('Servidor corriendo en el puerto ', this.port);

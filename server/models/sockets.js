@@ -7,6 +7,7 @@ class Socket{
     }
 
     eventosSockets(){
+        let nombreUsuario = '';
         //On Connection
         this.io.on('connection', (socket) => {
             console.log('cliente conectado')
@@ -14,11 +15,15 @@ class Socket{
             
             // Enviar el historial de mensajes al nuevo cliente
             socket.emit('historial-mensajes', this.historialMensajes);
-            
+            socket.on('nombre-usuario',(nombre) => {
+                nombreUsuario = nombre
+            })
             socket.on("mensaje-a-servidor", (dataCliente) => {
                 const nuevoMensaje = {
                     msg: dataCliente,
-                    fecha: new Date()
+                    fecha: new Date(),
+                    nombreUsuario
+
                 };
                 
                 // Guardar el mensaje en el historial
