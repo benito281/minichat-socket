@@ -4,10 +4,52 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
+    <title>MiniChat</title>
+    <link href="/src/style.css" rel="stylesheet">
+
   </head>
-  <body>
-    <div id="app"></div>
+  <body class="container mx-auto py-4">
+    <div
+      class="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-sm border border-gray-100"
+    >
+      <div class="mb-6">
+        <h1 class="text-xl font-bold text-gray-800 tracking-tight">MiniChat</h1>
+        <div class="h-1 w-10 bg-violet-500 mt-2 rounded-full"></div>
+      </div>
+
+      <form id="miFormulario" class="relative">
+        <div class="flex items-center gap-3">
+          <div class="relative flex-1">
+            <input
+              type="text"
+              id="txtMensaje"
+              placeholder="Escribe tu mensaje aquí..."
+              class="w-full pl-4 pr-4 py-3 bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 block transition-all duration-200 outline-none"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="bg-violet-600 hover:bg-violet-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg focus:ring-4 focus:ring-violet-300"
+          >
+            Enviar
+          </button>
+        </div>
+      </form>
+
+      <div
+        id="misMensajes"
+        class="h-80 overflow-y-auto p-6 space-y-4 bg-white scroll-smooth"
+      >
+        <div
+          class="text-center text-gray-400 text-sm mt-20 italic opacity-50"
+          id="mensaje-bienvenida"
+        >
+          El historial de mensajes aparecerá aquí...
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
